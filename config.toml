@@ -3,7 +3,7 @@ baseURL = "https://h3yon.github.io/"
 defaultContentLanguage = "en"
 # language code
 languageCode = "en"
-title = "My New Hugo Site"
+title = "h3yon blog"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
@@ -37,7 +37,7 @@ theme = "LoveIt"
   # LoveIt theme version
   version = "0.2.X"
   # site description
-  description = "This is My New Hugo Site"
+  description = "Welcome to h3yon 개구리 블로그"
   # site keywords
   keywords = ["Theme", "Hugo"]
   # site default theme ("light", "dark", "auto")
@@ -71,7 +71,7 @@ theme = "LoveIt"
       # URL of avatar shown in home page
       avatarURL = "/images/avatar.png"
       # subtitle shown in home page
-      subtitle = "This is My New Hugo Site"
+      subtitle = "Welcome to h3yon 개구리 blog"
       # whether to use typeit animation for subtitle
       typeit = true
       # whether to show social links
@@ -85,13 +85,9 @@ theme = "LoveIt"
       defaultHiddenFromHomePage = false
   # Social Info in home page
   [params.social]
-    GitHub = "xxxx"
+    GitHub = "https://github.com/h3yon"
     Linkedin = "xxxx"
-    Twitter = "xxxx"
-    Instagram = "xxxx"
-    Email = "xxxx@xxxx.com"
-    Facebook = "xxxx"
-    Telegram = "xxxx"
+    Email = "khykhy1006@gmail.com"
 
   # Page config
   [params.page]
@@ -170,7 +166,7 @@ theme = "LoveIt"
     baidu = ""
   # Publisher Info just for SEO
   [params.publisher]
-    name = "xxxx"
+    name = "h3yon"
     [params.publisher.logo]
       url = "logo.png"
       width = 127
@@ -259,8 +255,8 @@ theme = "LoveIt"
 
 # Author Info
 [author]
-  name = "xxxx"
-  link = ""
+  name = "h3yon"
+  link = "https://github.com/h3yon"
 
 # Sitemap Info
 [sitemap]
