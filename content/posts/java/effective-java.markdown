@@ -104,37 +104,37 @@ ex) DriverManager.getConnection, Class.forName 때문에
 
 2. 1)public static 멤버를 하나 마련하여 유일하게 인스턴스에 접근하게 하거나, 
 
-(권한이 있는 클라이언트는 리플렉션 API인 AccessibleObject.setAccessible로 private 생성자를 호출할 수 있다.)
+    (권한이 있는 클라이언트는 리플렉션 API인 AccessibleObject.setAccessible로 private 생성자를 호출할 수 있다.)
 
-```java
-public class SingleFruit{
-	public static final SingleFruit INSTANCE = new SingleFruit();
-	private SingleFruit(){ ... }
-	...
-}
-```
+    ```java
+    public class SingleFruit{
+        public static final SingleFruit INSTANCE = new SingleFruit();
+        private SingleFruit(){ ... }
+        ...
+    }
+    ```
 
-2)정적 팩토리 메서드를 public static 멤버로 제공하는 방법,
+    2)정적 팩토리 메서드를 public static 멤버로 제공하는 방법,
 
-```java
-public class SingleFruit{
-	public static final SingleFruit INSTANCE = new SingleFruit();
-	private SingleFruit(){ ... }
-	public static SingleFruit getInstance() { return INSTANCE; }
-	...
-}
-```
+    ```java
+    public class SingleFruit{
+        public static final SingleFruit INSTANCE = new SingleFruit();
+        private SingleFruit(){ ... }
+        public static SingleFruit getInstance() { return INSTANCE; }
+        ...
+    }
+    ```
 
-3)**원소가 하나인 열거 타입을 선언하는 방법** 3가지가 있다.
+    3)**원소가 하나인 열거 타입을 선언하는 방법** 3가지가 있다.
 
-```java
-public enum SingleFruit{
-	INSTANCE;
-	...
-}
-```
+    ```java
+    public enum SingleFruit{
+        INSTANCE;
+        ...
+    }
+    ```
 
-대부분 3번째 방법이 좋다.
+    대부분 3번째 방법이 좋다.
 
 ## Item4. 인스턴스화를 막으려거든 private 생성자를 사용하라.
 
