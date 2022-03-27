@@ -9,7 +9,7 @@ tags:
 ---
 # 이펙티브 자바
 
-# Item1. 생성자 대신 정적 팩토리 메서드를 고려하라**
+## Item1. 생성자 대신 정적 팩토리 메서드를 고려하라
 
 정적 팩토리 메서드(static factory method)는 그 `클래스의 인스턴스를 반환`하는 단순한 정적 메서드이다.
 
@@ -37,7 +37,7 @@ ex) DriverManager.getConnection, Class.forName 때문에
 2. 프로그래머가 정적 팩토리 메서드를 찾기 어려워 한다.
 → 생성자처럼 설명에 명확히 드러나 있지 않아서
 
-## 정적 팩토리 메서드 네이밍 방식
+### 정적 팩토리 메서드 네이밍 방식
 
 - from
     
@@ -94,9 +94,9 @@ ex) DriverManager.getConnection, Class.forName 때문에
     ```
     
 
-# Item2. 생성자에 매개변수가 많다면 빌더를 고려하라
+## Item2. 생성자에 매개변수가 많다면 빌더를 고려하라
 
-# Item3. private 생성자나 열거 타입으로 싱글턴임을 보증하라
+## Item3. private 생성자나 열거 타입으로 싱글턴임을 보증하라
 
 클래스를 싱글톤으로 만들면, 이를 사용하는 클라이언트를 테스트하기 어려워질 수 있다. mocking하기 어렵기 때문이다. 싱글턴을 생성하는 방법은 
 
@@ -136,9 +136,9 @@ public enum SingleFruit{
 
 대부분 3번째 방법이 좋다.
 
-# Item4. 인스턴스화를 막으려거든 private 생성자를 사용하라.
+## Item4. 인스턴스화를 막으려거든 private 생성자를 사용하라.
 
-# Item5. 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라.
+## Item5. 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라.
 
 정적 유틸리티를 사용할 때,
 
@@ -162,7 +162,7 @@ public class RightDictionary{
 }
 ```
 
-# Item6. 불필요한 객체 생성을 피하라.
+## Item6. 불필요한 객체 생성을 피하라.
 
 ```java
 //절대 안 됨 - 문자열 인스턴스 계속 생성
@@ -192,7 +192,7 @@ public class Checker{
 }
 ```
 
-# Item7. 다 쓴 객체 참조를 해제하라
+## Item7. 다 쓴 객체 참조를 해제하라
 
 자바의 경우 가비지 컬렉터 때문에 메모리 관리에 있어 편해진다. 
 
@@ -220,13 +220,13 @@ public Object pop(){
 
 : 근데 캐시 엔트리 유효 기간을 모르니, 점점 엔트리 `가치를 떨어뜨리는 방식`을 흔히 사용한다. 쓰지않는 엔트리는 백그라운드 스레드를 활용하거나, 새 엔트리를 추가할 때 부수 작업을 수행함으로써 청소해줘야 한다.
 
-# Item8. finalizer, cleaner 사용을 피하라
+## Item8. finalizer, cleaner 사용을 피하라
 
 두가지 객체 소멸자 finalizer, cleaner가 있는데, 예측할 수 없고 성능에 위험할 수 있다. 보안 문제를 야기할 수 있다.
 
 자바 라이브러리의 일부 클래스는 안전망 역할의 finalizer를 제공한다. (FileInputSystem, FileOutputSystem, ThreadpoolExecutor가 대표적이다)
 
-# Item9. try-finally 보다는 try-with-resuorces를 사용하라.
+## Item9. try-finally 보다는 try-with-resuorces를 사용하라.
 
 자원 2개를 사용해야 할 때 try-finally방식을 보자.
 
@@ -261,7 +261,7 @@ static void copy(String src, String dst) throws IOException{
 }
 ```
 
-# Item10. equals는 일반 규약을 지켜 재정의하라
+## Item10. equals는 일반 규약을 지켜 재정의하라
 
 ```java
 @Override
@@ -312,7 +312,7 @@ p.equals(cp)는 true, cp.equals(p)는 p가 ColorfulPoint가 아니기 때문에 
 
 → 꼭 필요한 경우가 아니라면 equals를 재정의하지 말자.
 
-# Item11-14 재정의, Comparable
+## Item11-14 재정의, Comparable
 
 - **Item11. equals를 재정의하려거든 hashCode도 재정의하라**
     
@@ -331,7 +331,7 @@ p.equals(cp)는 true, cp.equals(p)는 p가 ColorfulPoint가 아니기 때문에 
     Comparable의 compareTo 메서드에서 <, >를 사용하는 것은 거추장스럽고 오류를 유발하여 이제는 추천하지 않는다. Comparator의 compare() 또는 비교자 생성 메서드를 사용하자.
     
 
-# Item15-16 클래스와 멤버
+## Item15-16 클래스와 멤버
 
 - **Item15. 클래스와 멤버의 접근 권한을 최소화해라**
     
@@ -352,7 +352,7 @@ p.equals(cp)는 true, cp.equals(p)는 p가 ColorfulPoint가 아니기 때문에 
     : 클래스를 확장할 수 없게 한다. / 객체 상태를 변경하는 메서드를 제공하지 않는다 / 모든 필드를 final로 선언, private로 선언 / 자신 외에는 내부 가변 컴포넌트를 접근할 수 없게 한다.
     
 
-# Item18-22 상속
+## Item18-22 상속
 
 - **Item18. 상속보다는 컴포지션을 사용하라.**
     
