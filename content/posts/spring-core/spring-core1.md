@@ -32,11 +32,11 @@ JPA(인터페이스)
 
 **스프링 역사**
 
-2003~2006. (Spring Framework 1.0~2.0) - XML
-2009~2013. (Spring Framework 3.0~4.0) - 자바
-2014. Spring Boot 1.0 출시
-2017. Spring Framework 5.0, Spring Boot 2.0(리액티브 프로그래밍 지원)
-2020. Spring Framework 5.2, Spring Boot 2.3.x
+2003-2006 -> (Spring Framework 1.0~2.0) - XML
+2009-2013 -> (Spring Framework 3.0~4.0) - 자바
+2014 -> Spring Boot 1.0 출시
+2017 -> Spring Framework 5.0, Spring Boot 2.0(리액티브 프로그래밍 지원)
+2020 -> Spring Framework 5.2, Spring Boot 2.3.x
 
 **스프링**
 
@@ -45,27 +45,17 @@ JPA(인터페이스)
 - 핵심. 스프링 프레임워크
 - 편의기능. 스프링 부트
 - (선택)
-스프링 데이터, -(MongoDB, NoSQL, Redis 기본 CRUD 지원)
-스프링 세션, 스프링 시큐리티, 스프링 Rest Docs, 
-스프링 배치,  - (천만명 데이터를 한번에 업데이트 힘듦. 천건씩 돌리고 저장하고. 배치)
-스프링 클라우드
-etc
+    스프링 데이터, -(MongoDB, NoSQL, Redis 기본 CRUD 지원)
+    스프링 세션, 스프링 시큐리티, 스프링 Rest Docs, 
+    스프링 배치,  - (천만명 데이터를 한번에 업데이트 힘듦. 천건씩 돌리고 저장하고. 배치)
+    스프링 클라우드
+    etc
 
 **스프링 프레임워크와 스프링 부트**
 
 | 스프링 프레임워크 | 스프링 부트 |
 | --- | --- |
-| 핵심: DI Container, AOP, event
-웹: MVC, WebFlux
-데이터 접근: Transaction, JDBC, ORM, XML
-기술통합
-테스트
-언어 | (스프링 부트를 통해 스프링 프레임워크 사용하는 게 다수)
-Tomcat 같은 웹서버 내장
-starter 종속성 제공(손쉬운 빌드)
-스프링과 써드 라이브러리 자동 구성(외부 라이브러리 버전)
-production 준비 기능(상태 확인, 매트릭모니터링)
-간결한 설정 |
+| 핵심: DI Container, AOP, event </br> 웹: MVC, WebFlux </br> 데이터 접근: Transaction, JDBC, ORM, XML </br> 기술통합 </br> 테스트 </br> 언어 | (스프링 부트를 통해 스프링 프레임워크 사용하는 게 다수) </br> Tomcat 같은 웹서버 내장 </br> starter 종속성 제공(손쉬운 빌드) </br> 스프링과 써드 라이브러리 자동 구성(외부 라이브러리 버전) </br> production 준비 기 </br> (상태 확인, 매트릭모니터링) </br> 간결한 설정 |
 
 **스프링의 핵심**
 
@@ -153,22 +143,22 @@ AppConfig처럼 객체를 생성하고 관리하면서 의존관계를 연결해
     1. 모든 빈 출력
     String[] beanDefinitionNames = ac.getBeanDefinitionNames();
     
-    2. 직접 등록한 빈인지 확인
+    1. 직접 등록한 빈인지 확인
     if(beanDefinition.getRole() == BeanDefinition.ROLE_APPLICATION)
     
-    3. 빈 객체 조회
+    1. 빈 객체 조회
     ac.getBean(빈이름, 타입) / (타입)
     ex) ac.getBean("memberService",MemberService.class);
     
-    4. 특정 타입 빈 모두 조회
+    1. 특정 타입 빈 모두 조회
     Map<String, MemberRepository> beansOfType =
     	ac.getBeansOfType(MemberRepository.class);
     
-    5. 부모 타입으로 조회시, 자식이 둘 이상 있으면, 중복 오류가 발생
+    1. 부모 타입으로 조회시, 자식이 둘 이상 있으면, 중복 오류가 발생
     assertThrows(NoUniqueBeanDefinitionException.class, () ->
     	ac.getBean(DiscountPolicy.class));
     
-    6. 부모 타입으로 조회시, 자식이 둘 이상 있으면, 빈 이름을 지정하면 된다
+    1. 부모 타입으로 조회시, 자식이 둘 이상 있으면, 빈 이름을 지정하면 된다
     DiscountPolicy rateDiscountPolicy = ac.getBean("rateDiscountPolicy",
     	DiscountPolicy.class);
     assertThat(rateDiscountPolicy).isInstanceOf(RateDiscountPolicy.class);
