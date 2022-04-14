@@ -24,19 +24,17 @@ tags:
 로드존슨이 EJB를 비판하면서 미래 스프링의 기틀을 다져준다.
 링킹이 Hibernate 등장. 자바 표준 JPA 구현체로 사용될 수 있다.
 
-JPA(인터페이스)
-
-→ Hibernate, EclipseLink, 기타, ...
+![image](https://user-images.githubusercontent.com/46602874/163420439-f72a983e-ab35-49f8-ab9c-3b7fcd259f55.png)
 
 - 스프링 오픈소스 제안 → EJB란 겨울을 넘어 새로운 시작으로 지음
 
 **스프링 역사**
 
-2003-2006 -> (Spring Framework 1.0~2.0) - XML
-2009-2013 -> (Spring Framework 3.0~4.0) - 자바
-2014 -> Spring Boot 1.0 출시
-2017 -> Spring Framework 5.0, Spring Boot 2.0(리액티브 프로그래밍 지원)
-2020 -> Spring Framework 5.2, Spring Boot 2.3.x
+2003-2006 → (Spring Framework 1.0~2.0) - XML  
+2009-2013 → (Spring Framework 3.0~4.0) - 자바  
+2014 → Spring Boot 1.0 출시  
+2017 → Spring Framework 5.0, Spring Boot 2.0(리액티브 프로그래밍 지원)  
+2020 → Spring Framework 5.2, Spring Boot 2.3.x
 
 **스프링**
 
@@ -67,9 +65,10 @@ JPA(인터페이스)
 (**추상**이 **캡**이**다**)
     - 추상화
     - 캡슐화
-    - 다형성 - 세상은 역할과 구현으로 이루어진다. (자동차 구현체: 아반떼, 테슬라 모델3, K3)
-    실행 시점에 구현객체를 유연하게 변경할 수 있다.
-    private Car car = new K3();
+    - 다형성 - 세상은 역할과 구현으로 이루어진다.   
+    (ex) 자동차 구현체: 아반떼, 테슬라 모델3, K3)  
+    실행 시점에 구현객체를 유연하게 변경할 수 있다.  
+    private Car car = new K3();  
     → 스프링에서 IoC, DI는 다형성을 활용해 역할과 구현을 편리하게 다룰 수 있도록 지원한다
     - 상속
 
@@ -87,7 +86,7 @@ JPA(인터페이스)
 - DI(Inversion)P: 의존관계 역전 원칙
 인터페이스에 의존하라는 것. 즉, 역할과 구현에서 역할에 의존하라는 것.
 
-→ OCP, DIP 중요!
+→ **OCP, DIP** 중요!
 
 **스프링!**
 
@@ -142,23 +141,23 @@ AppConfig처럼 객체를 생성하고 관리하면서 의존관계를 연결해
     
     1. 모든 빈 출력
     String[] beanDefinitionNames = ac.getBeanDefinitionNames();
-    
-    1. 직접 등록한 빈인지 확인
+
+    2. 직접 등록한 빈인지 확인
     if(beanDefinition.getRole() == BeanDefinition.ROLE_APPLICATION)
-    
-    1. 빈 객체 조회
+
+    3. 빈 객체 조회
     ac.getBean(빈이름, 타입) / (타입)
     ex) ac.getBean("memberService",MemberService.class);
     
-    1. 특정 타입 빈 모두 조회
+    4. 특정 타입 빈 모두 조회
     Map<String, MemberRepository> beansOfType =
     	ac.getBeansOfType(MemberRepository.class);
     
-    1. 부모 타입으로 조회시, 자식이 둘 이상 있으면, 중복 오류가 발생
+    5. 부모 타입으로 조회시, 자식이 둘 이상 있으면, 중복 오류가 발생
     assertThrows(NoUniqueBeanDefinitionException.class, () ->
     	ac.getBean(DiscountPolicy.class));
     
-    1. 부모 타입으로 조회시, 자식이 둘 이상 있으면, 빈 이름을 지정하면 된다
+    6. 부모 타입으로 조회시, 자식이 둘 이상 있으면, 빈 이름을 지정하면 된다
     DiscountPolicy rateDiscountPolicy = ac.getBean("rateDiscountPolicy",
     	DiscountPolicy.class);
     assertThat(rateDiscountPolicy).isInstanceOf(RateDiscountPolicy.class);
@@ -270,22 +269,22 @@ public class SingletonService {
 
 ```java
 @Configuration
-  public class AppConfig {
-      @Bean
-      public MemberService memberService() {
-          return new MemberServiceImpl(memberRepository());
-      }
-      @Bean
-      public OrderService orderService() {
-          return new OrderServiceImpl(
-                  memberRepository(),
-                  discountPolicy());
-			}
-      @Bean
-      public MemberRepository memberRepository() {
-          return new MemoryMemberRepository();
-      }
-... }
+public class AppConfig {
+    @Bean
+    public MemberService memberService() {
+        return new MemberServiceImpl(memberRepository());
+    }
+    @Bean
+    public OrderService orderService() {
+        return new OrderServiceImpl(
+                memberRepository(),
+                discountPolicy());
+        }
+    @Bean
+    public MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
+}
 ```
 
 위에 언급했듯, `스프링 컨테이너 = 싱글톤 레지스트리`
@@ -370,8 +369,7 @@ public class AutoAppConfig {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 		@Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy
-															discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
@@ -389,9 +387,9 @@ public class AutoAppConfig {
 - @Configuration: 스프링 설정 정보로 인식하고, 스프링 빈이 싱글톤을 유지하도록 추가 처리
 
 > 필터
-• useDefaultFilters: 이 옵션을 끄면 기본 스캔 대상들 제외
-• includeFilters: 스캔 대상 추가 지정
-• excludeFilters: 스캔 제외 대상 추가 지정
+• useDefaultFilters: 이 옵션을 끄면 기본 스캔 대상들 제외  
+• includeFilters: 스캔 대상 추가 지정   
+• excludeFilters: 스캔 제외 대상 추가 지정  
 > 
 
 스캔 대상에 추가/제외할 애노테이션
