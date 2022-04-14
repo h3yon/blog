@@ -112,7 +112,7 @@ production 준비 기능(상태 확인, 매트릭모니터링)
 
 ## 1. 스프링 핵심 원리 이해1 - 예제 만들기
 
-![Untitled](%E1%84%89%E1%85%B3%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%92%E1%85%A2%20f747b/Untitled.png)
+![spring-core1-0](https://user-images.githubusercontent.com/46602874/163417738-624f2698-6958-4b8c-ac91-48943d5c43fe.png)
 
 실무에서는 HashMap → `ConcurrentHashMap`
 
@@ -129,13 +129,13 @@ AppConfig처럼 객체를 생성하고 관리하면서 의존관계를 연결해
 - `@Bean`: 해당 어노테이션이 붙은 메서드를 모두 호출해서 반환된 객체를 `스프링 컨테이너에 등록`된다.
 (`applicationContext.getBean`으로 **스프링 빈** 객체를 찾을 수 있다.)
     
-    ![Untitled](%E1%84%89%E1%85%B3%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%92%E1%85%A2%20f747b/Untitled%201.png)
+    ![spring-core1-1](https://user-images.githubusercontent.com/46602874/163417747-88d8dd8a-7430-441b-a983-e09bf5092db3.png)
     
     아래 예시를 보면
     (왼쪽) Bean으로 등록했기 때문에 + 인터페이스에 구현체를 넣어줌으로써 원하는 `가격 정책`을 결정할 수 O
     (오른쪽) 사용처에서 알아서 가져와서 등록할 수 있음을 알 수 있다.
     
-    ![Untitled](%E1%84%89%E1%85%B3%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%92%E1%85%A2%20f747b/Untitled%202.png)
+    ![spring-core1-2](https://user-images.githubusercontent.com/46602874/163417754-d68b71df-1627-4514-89ac-185969d29a98.png)
     
 
 ## 3. **스프링 컨테이너와 스프링 빈**
@@ -185,7 +185,7 @@ AppConfig처럼 객체를 생성하고 관리하면서 의존관계를 연결해
 `BeanDefinition`이라는 `추상화`를 알아보자
 → `빈 설정 메타정보`, @Bean, <bean>당 각각 하나씩 메타 정보 생성
     
-    ![Untitled](%E1%84%89%E1%85%B3%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%92%E1%85%A2%20f747b/Untitled%203.png)
+    ![spring-core1-3](https://user-images.githubusercontent.com/46602874/163417761-0ee59286-ac4a-4c46-9ede-6c7b3d9d900d.png)
     
     `AnnotatedBeanDefinitionReader`, `XmlBeanDefinitionReader`을 사용해서
     AppConfig.class를 읽고 `BeanDefinition`을 생성한다.
@@ -207,7 +207,7 @@ AppConfig처럼 객체를 생성하고 관리하면서 의존관계를 연결해
 
 ## 4. **싱글톤 컨테이너**
 
-![Untitled](%E1%84%89%E1%85%B3%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%92%E1%85%A2%20f747b/Untitled%204.png)
+![spring-core1-4](https://user-images.githubusercontent.com/46602874/163417764-581a8eb2-07e1-4ece-aa12-5b5dedb2ff18.png)
 
 요청 올 때마다 서비스를 만들면 무리가 될 수 있다.(메모리 낭비)
 
@@ -256,7 +256,7 @@ public class SingletonService {
 
 - 스프링 컨테이너는 싱글턴 패턴을 적용하지 않아도, `객체 인스턴스를 싱글톤`으로 관리
     
-    ![Untitled](%E1%84%89%E1%85%B3%E1%84%91%E1%85%B3%E1%84%85%E1%85%B5%E1%86%BC%20%E1%84%92%E1%85%A2%20f747b/Untitled%205.png)
+    ![spring-core1-5](https://user-images.githubusercontent.com/46602874/163417771-a197f5c5-792d-422e-8aff-fe9cde040fac.png)
     
     → 싱글톤 컨테이너 역할
     → 지저분한 코드가 들어가지 않아도 된다
