@@ -1,0 +1,8 @@
+# Webflux Swagger
+
+출처: https://medium.com/walmartglobaltech/swagger-implementation-for-webflux-functional-programming-model-8ac55bfce2be
+
+어노테이션 기반 webflux면 상관 없지만 함수형 프로그래밍을 사용하였을 때  
+사용해왔던 swagger import를 사용하는지가 궁금했다.
+
+참고1: [깃허브 kotlin-openapi-spring-functional](https://github.com/cdimascio/kotlin-openapi-spring-functional-template)
