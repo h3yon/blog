@@ -1,5 +1,5 @@
 ---
-title: "모던 자바 인 액션 읽기"
+title: "모던 자바 인 액션 1~6장 스트림"
 date: 2022-04-26T01:50:34+09:00
 draft: false
 categories:
@@ -233,5 +233,84 @@ generate는 생산된 각 값을 연속적으로 계산하는 게 아니라, Sup
     ```
     스트림 리스트를 유지한다는 장점이 있다.
 
-# 6.4 이해가 부족해서 복습 필요할 것으로 보임
+    collectingAndThen을 사용함으로써 칼로리가 가장 높은 요리도 뽑을 수 있다.
+    ```java
+    Map<Boolean, Dish> mostCaloricPartitionedByVegetarian =
+        menu.stream
+            .collect(partitioningBy(Dish::isVegeterian, 
+                collectingAndThen(maxBy(comparingInt(Dish::getCalories)), Optional::get))
+            );
+    // {false=pork, true=pizza}
+    ```
+9. 소수와 비소수로 분할하기
+    ```java
+    public boolean isPrime(int candidate){
+        return IntStream.range(2, candidate)
+            .noneMatch(i -> candidate % i == 0);
+    }
+    ```
 
+### 6.5 Collector 인터페이스
+
+```java
+public interface Collector<T, A, R> {
+  Supplier<A> supplier();
+  BiConsumer<A, T> accumulator();
+  Function<A, R> finisher();
+  BinaryOperator<A> combiner();
+  Set<Characteristics> characteristics();
+}
+```
+
+1. Supplier: 반환
+    ```java
+    public Supplier<List<T>> supplier() { 
+        return ArrayList::new; 
+    }
+    ```
+2. accumulator: 결과 컨테이너에 요소 추가
+    ```java
+    public BiConsumer<List<T>, T> accumulator() { 
+        return List::add; 
+    }
+    ```
+3. finisher: 최종 변환값을 결과 컨테이너로 적용
+   이미 최종결과일 때 변환 과정 없이 항등 함수를 반환한다.
+    ```java
+    public Function<List<T>, List<T>> finisher() {
+        return Function.identity();
+    }
+    ```
+4. combiner 메서드: 두 결과 컨테이너 병합
+   ```java
+   public BinaryOperator<List<T>> combiner() {
+    return (list1, list2) -> {
+        liat.addAll(list2);
+        return list1;
+        }
+    }
+   ```
+5. characteristics 메서드
+   컬렉터의 연산을 정의하는 Characteristics 형식의 불변 집합 반환  
+   항목으로는 `UNORDERED, CONCURRENT, IDENTITY_FINISH`가 있다.
+   ```java
+    public Set<Characteristics> characteristics() { 
+        return Collections.unmodifiableSet(
+            EnumSet.of(IDENTITY_FINISH, CONCURRENT)
+        ); 
+    }
+   ```
+6. 소수로만 나누기
+    대상의 제곱보다 큰 소수를 찾으면 검사를 중단하기 위해 takeWhile을 사용할 수 있다. 자바9에 나타난 takeWhile이기 때문에 자바 8에서는 직접 구현해야 한다.
+   ```java
+   public boolean isPrime(List<Integer> primes, int candidate) { 
+       int candidateRoot = (int) Math.sqrt((double)candidate); 
+       return primes.stream() 
+        .takeWhile(i -> i <= candidateRoot)
+        .noneMatch(i -> candidate % i == 0); 
+    }
+   ```
+
+> 6.6 커스텀 컬렉터를 구현해서 성능 개선하기는 다음에 하기
+
+참고로 Stream에서 boxed는 IntStream을 사용한다고 가정할 때 Stream\<Integer\>로 바꿔준다.
