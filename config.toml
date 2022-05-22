@@ -7,6 +7,7 @@ defaultContentLanguage = "en"
 languageCode = "en"
 title = "h3yon blog"
 
+
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
 
