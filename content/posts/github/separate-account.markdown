@@ -133,6 +133,8 @@ $ vi ~/.gitconfig-comp
 
 계속 includeIf에서 계정 확인이 되지 않아 삽질을 하고 있었는데,  
 Stack Overflow를 통해 git clone 받았거나 다른 `레퍼지토리에서 확인이 가능`하다는 걸 알 수 있었다ㅎㅎ  
+나처럼 comp 디렉토리에서 `git config user.name` 하면서 `왜 안 되지??` 하면서 고민하지 말자!
+
 나는 Documents 디렉토리의 user, comp에 따라 계정을 다르게 했어서 각각 레퍼지토리를 클론 받고 확인했다.
 
 ```
@@ -144,4 +146,5 @@ $ git config user.name
 h3yon_실명
 ```
 
+잘 되는 걸 볼 수 있었다.  
 끝끝!
