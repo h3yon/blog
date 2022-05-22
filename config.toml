@@ -1,3 +1,6 @@
+disqusShortname = "h3yon-github-io"
+googleAnalytics = "286357136"
+
 baseURL = "https://h3yon.github.io/"
 # [en, zh-cn, fr, ...] determines default content language
 defaultContentLanguage = "en"
