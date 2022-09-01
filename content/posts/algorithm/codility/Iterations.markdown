@@ -21,10 +21,8 @@ N is an integer within the range [1..2,147,483,647].
 ```python
 def solution(N):
     binary_value = str(bin(N))[2:]
-    arr = binary_value.split('1')
+    arr = binary_value.strip('0').strip('1').split('1')
     answer = 0
-    if arr[0] != '' or arr[-1] != '':
-        return answer
     for value in arr:
         if len(value) > 0:
             answer = max(len(value), answer)
@@ -35,4 +33,4 @@ def solution(N):
 # 후기
 
 큰일났다. 점수가 너무 낮다,,
-60점,,
+60점,,-> strip을 해주니 100점 strip이 필수!
