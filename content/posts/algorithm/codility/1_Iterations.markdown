@@ -10,7 +10,7 @@ tags:
 
 # 주제: 1. Iterations
 
-# BinaryGap
+## BinaryGap
 
 A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
 
@@ -28,7 +28,7 @@ Write an efficient algorithm for the following assumptions:
 
 N is an integer within the range [1..2,147,483,647].
 
-# try
+## try
 
 ```python
 def solution(N):
@@ -42,7 +42,7 @@ def solution(N):
 
 ```
 
-# 후기
+## 후기
 
 큰일났다. 점수가 너무 낮다,,
 60점,,-> strip을 해주니 100점 strip이 필수!
