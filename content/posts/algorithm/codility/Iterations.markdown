@@ -1,3 +1,13 @@
+---
+title: "Week Preparation Kit"
+date: 2022-08-28T23:47:34+09:00
+draft: false
+categories:
+  - algorithm
+tags:
+  - algorithm
+---
+
 # BinaryGap
 
 A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
