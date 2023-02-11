@@ -88,7 +88,7 @@ theme = "LoveIt"
       defaultHiddenFromHomePage = false
   # Social Info in home page
   [params.social]
-    GitHub = "https://github.com/h3yon"
+    GitHub = "h3yon"
     Linkedin = "xxxx"
     Email = "khykhy1006@gmail.com"
 
