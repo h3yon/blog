@@ -104,7 +104,7 @@ feign:
 public interface 웹사이트Client{
 
 	@GetMapping
-  웹사이트DTO get웹사이트정보(@RequestParam Int siteNo);
+ 	웹사이트DTO get웹사이트정보(@RequestParam Int siteNo);
 }
 ```
 
@@ -115,7 +115,7 @@ TODO) GetMapping과 RequestMapping 중 주로 어떤 걸 사용하는지 한번 
 public interface WebsiteClient{
 
 	@RequestMapping(method=RequestMethod.GET, value='/post')
-  WebsiteDTO getWebsite(@RequestParam int siteNo);
+  	WebsiteDTO getWebsite(@RequestParam int siteNo);
 }
 ```
 
@@ -148,15 +148,14 @@ fallback 방식 사용되는 부분 2가지가 유사해보이긴 한데 좀 달
     @Sl4j
     @Component 
     public class WebsiteClientFallback implements FallbackFactory<WebsiteClient> {
-    
 	@Override
 	public WebsiteClient create(){
 		return new WebsiteClient(){
-		    @Override
-		    public WebsiteDTO getWebsite(int siteNo) {
+			@Override
+			public WebsiteDTO getWebsite(int siteNo) {
 			log.error("웹사이트 정보 가져오는 거 실패했어요!");
 			return new WebsiteDTO();
-		    }	
+			}	
 		}
 	}
     }
@@ -171,7 +170,7 @@ client 어노테이션에 fallback 내용을 추가해주면 된다.
 public interface WebsiteClient{
 
 	@RequestMapping(method=RequestMethod.GET, value='/post')
-  WebsiteDTO getWebsite(@RequestParam int siteNo);
+  	WebsiteDTO getWebsite(@RequestParam int siteNo);
 }
 ```
 
