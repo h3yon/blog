@@ -1,3 +1,14 @@
+---
+title: "스프링 클라우드 openfeign 파악하기"
+date: 2023-02-11T11:50:34+09:00
+draft: false
+categories:
+  - java
+tags:
+  - java
+---
+
+
 개발을 하면서 외부 요청을 날릴 때 보통은 restTemplate(이제는 webclient)만 주로 사용했었다. 
 
 비동기 프로그래밍 방식을 주로 다루었어서 webclient를 많이 사용했었다.
