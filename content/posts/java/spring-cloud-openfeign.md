@@ -149,16 +149,16 @@ fallback 방식 사용되는 부분 2가지가 유사해보이긴 한데 좀 달
     @Component 
     public class WebsiteClientFallback implements FallbackFactory<WebsiteClient> {
     
-    		@Override
-    		public WebsiteClient create(){
-    				return new WebsiteClient(){
-    				    @Override
-    				    public WebsiteDTO getWebsite(int siteNo) {
-    				        log.error("웹사이트 정보 가져오는 거 실패했어요!");
-    				        return new WebsiteDTO();
-    				    }	
-    				}
-    		}
+	@Override
+	public WebsiteClient create(){
+		return new WebsiteClient(){
+		    @Override
+		    public WebsiteDTO getWebsite(int siteNo) {
+			log.error("웹사이트 정보 가져오는 거 실패했어요!");
+			return new WebsiteDTO();
+		    }	
+		}
+	}
     }
     ```
     
