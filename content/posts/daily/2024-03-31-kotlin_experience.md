@@ -31,7 +31,7 @@ null check, getter, setter 등등이 그 예시다.
 
 1. Getter, Setter, 생성자 (자바의 record와 동일)
     JAVA
-    ```
+    ```java
     public class MyDTO {
         private final int data;
     
@@ -45,14 +45,14 @@ null check, getter, setter 등등이 그 예시다.
     }
     ```
     KOTLIN
-    ```
+    ```kotlin
     data class MyDTO(var data: int)
     ```
 2. NPE를 걱정하지 않아도 된다. 컴파일 타임에 에러를 발생시켜준다.
     코틀린에서 MyDTO? 가 아닌 MyDTO 만 있으면 null일 수가 없다는 것. 자바의 primitive type
       
     JAVA
-    ```
+    ```java
     public String getName(MyDTO myDTO) {
         if(myDTO != null){
             return myDTO.getName();
@@ -61,14 +61,14 @@ null check, getter, setter 등등이 그 예시다.
     }
     ```
     KOTLIN
-    ```
+    ```kotlin
     fun getName(myDTO: MyDTO?): String {
         return myDTO?.name ?: ""
     }
     ```
-3. lambda, stream (리스트를 가져오고 요소 A를 추가해주고 싶다.)
+3. stream
     JAVA 17
-    ```
+    ```java
     public List<String> getNames(List<String> names) {
         return names.stream()
                      .map(name -> "name: " + name)
@@ -76,7 +76,7 @@ null check, getter, setter 등등이 그 예시다.
     }
     ```
     KOTLIN
-    ```
+    ```kotlin
     fun getNames(names: List<String>): List<String> = names.map { "name: " + it }
     ```
 4. val
@@ -93,14 +93,14 @@ null check, getter, setter 등등이 그 예시다.
     ```
 5. 확장함수
     기존에 있던 거에 원하는 기능 확장 가능
-    ```
+    ```kotlin
     fun String?.appendNameAndGet(): String = "name" + this
 
     var h3yonName = "h3yon"
     var test = h3yon.appendNameAndGet() // name: h3yon
     ```
 6. 구조분해
-    ```
+    ```kotlin
     fun main() {
       val (name, extension) = splitFilename("helloWorld.kt")
       println("$name.$extension")
