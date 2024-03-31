@@ -29,7 +29,7 @@ null check, getter, setter 등등이 그 예시다.
 
 # 장점 - 예제 코드를 통해 확인해보자.
 
-1. Getter, Setter, 생성자 (자바의 record와 동일)
+1. Getter, Setter, 생성자 (자바의 record와 동일)  
     JAVA
     ```java
     public class MyDTO {
@@ -48,8 +48,8 @@ null check, getter, setter 등등이 그 예시다.
     ```kotlin
     data class MyDTO(var data: int)
     ```
-2. NPE를 걱정하지 않아도 된다. 컴파일 타임에 에러를 발생시켜준다.
-    코틀린에서 MyDTO? 가 아닌 MyDTO 만 있으면 null일 수가 없다는 것. 자바의 primitive type
+2. NPE를 걱정하지 않아도 된다. 컴파일 타임에 에러를 발생시켜준다.  
+    코틀린에서 MyDTO? 가 아닌 MyDTO 만 있으면 null일 수가 없다는 것. 자바의 primitive type  
       
     JAVA
     ```java
@@ -66,7 +66,7 @@ null check, getter, setter 등등이 그 예시다.
         return myDTO?.name ?: ""
     }
     ```
-3. stream
+3. stream  
     JAVA 17
     ```java
     public List<String> getNames(List<String> names) {
@@ -91,7 +91,7 @@ null check, getter, setter 등등이 그 예시다.
     // KOTLIN
     var name = "변경가능";
     ```
-5. 확장함수
+5. 확장함수  
     기존에 있던 거에 원하는 기능 확장 가능
     ```kotlin
     fun String?.appendNameAndGet(): String = "name" + this
